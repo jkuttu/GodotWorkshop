@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://jicf56cvikn4"]
+
+[ext_resource type="Texture2D" uid="uid://8hkogal2tpxi" path="res://tiles.png" id="1_3tuhu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e1m17"]
+size = Vector2(11, 17)
+
+[node name="Bullet" type="Sprite2D"]
+texture = ExtResource("1_3tuhu")
+hframes = 12
+vframes = 12
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_e1m17")

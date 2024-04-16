@@ -1,11 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://dkyu3w13qjsr8"]
+[gd_scene load_steps=9 format=3 uid="uid://dkyu3w13qjsr8"]
 
 [ext_resource type="Script" path="res://Models/Basics.gd" id="1_7uifn"]
 [ext_resource type="Texture2D" uid="uid://b636vvfawk78r" path="res://Ships/ship_0001.png" id="2_wqocx"]
 [ext_resource type="Texture2D" uid="uid://8hkogal2tpxi" path="res://tiles.png" id="3_pfbi2"]
 [ext_resource type="Script" path="res://Models/Gun.gd" id="4_tdku7"]
 [ext_resource type="Script" path="res://Models/EnemySpawnPoint.gd" id="5_pjaqm"]
-[ext_resource type="PackedScene" uid="uid://bms4hbnal0ofa" path="res://Models/enemy.tscn" id="6_ofjxo"]
+[ext_resource type="PackedScene" uid="uid://c0yk6d32io6r5" path="res://Models/enemy.tscn" id="6_ofjxo"]
+[ext_resource type="Script" path="res://Models/Control.gd" id="7_mg2o2"]
+
+[sub_resource type="Theme" id="Theme_nc42g"]
+default_font_size = 18
 
 [node name="SampleWorld" type="Node2D"]
 
@@ -38,6 +42,32 @@ enemy = ExtResource("6_ofjxo")
 [node name="Timer" type="Timer" parent="EnemySpawnPoint"]
 wait_time = 5.0
 autostart = true
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_mg2o2")
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme = SubResource("Theme_nc42g")
 
 [connection signal="screen_exited" from="Basics/Player/VisibleOnScreenNotifier2D" to="Basics" method="_on_visible_on_screen_notifier_2d_screen_exited"]
 [connection signal="timeout" from="EnemySpawnPoint/Timer" to="EnemySpawnPoint" method="_on_timer_timeout"]

@@ -4,9 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://uxkys4rmm5po" path="res://Ships/ship_0005.png" id="1_gudo1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b4hqh"]
-size = Vector2(29, 20)
+size = Vector2(29, 33)
 
-[node name="Enemy" type="RigidBody2D"]
+[node name="Enemy" type="RigidBody2D" groups=["enemy"]]
 mass = 0.01
 gravity_scale = 0.0
 script = ExtResource("1_eyuxe")

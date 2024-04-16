@@ -47,7 +47,7 @@ func _process(delta):
 
 
 
-func _on_visible_on_screen_notifier_2d_screen_exited():
-	print("exited")
-	# position = -position
+func _on_area_2d_body_entered(body):
+	print(body.name)
+	body.queue_free()
 	pass # Replace with function body.

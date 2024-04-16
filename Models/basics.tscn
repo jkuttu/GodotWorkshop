@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dkyu3w13qjsr8"]
+[gd_scene load_steps=10 format=3 uid="uid://dkyu3w13qjsr8"]
 
 [ext_resource type="Script" path="res://Models/Basics.gd" id="1_7uifn"]
 [ext_resource type="Texture2D" uid="uid://b636vvfawk78r" path="res://Ships/ship_0001.png" id="2_wqocx"]
@@ -7,6 +7,9 @@
 [ext_resource type="Script" path="res://Models/EnemySpawnPoint.gd" id="5_pjaqm"]
 [ext_resource type="PackedScene" uid="uid://c0yk6d32io6r5" path="res://Models/enemy.tscn" id="6_ofjxo"]
 [ext_resource type="Script" path="res://Models/Control.gd" id="7_mg2o2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3stxc"]
+size = Vector2(45, 37)
 
 [sub_resource type="Theme" id="Theme_nc42g"]
 default_font_size = 18
@@ -20,8 +23,6 @@ camera = NodePath("../Camera2D")
 [node name="Player" type="Sprite2D" parent="Basics"]
 texture = ExtResource("2_wqocx")
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Basics/Player"]
-
 [node name="Gun" type="Sprite2D" parent="Basics/Player" node_paths=PackedStringArray("basics")]
 position = Vector2(0, -24)
 scale = Vector2(0.70063, 0.790834)
@@ -31,6 +32,11 @@ vframes = 12
 frame = 10
 script = ExtResource("4_tdku7")
 basics = NodePath("../..")
+
+[node name="Area2D" type="Area2D" parent="Basics"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Basics/Area2D"]
+shape = SubResource("RectangleShape2D_3stxc")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -69,5 +75,5 @@ offset_bottom = 23.0
 grow_horizontal = 2
 theme = SubResource("Theme_nc42g")
 
-[connection signal="screen_exited" from="Basics/Player/VisibleOnScreenNotifier2D" to="Basics" method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="body_entered" from="Basics/Area2D" to="Basics" method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="EnemySpawnPoint/Timer" to="EnemySpawnPoint" method="_on_timer_timeout"]

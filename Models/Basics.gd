@@ -49,5 +49,10 @@ func _process(delta):
 
 func _on_area_2d_body_entered(body):
 	print(body.name)
+	if not body.is_in_group("enemy"):
+		return
+	Common.playerHealth-=1
+	if Common.playerHealth==0:
+		print("Game Over")
 	body.queue_free()
 	pass # Replace with function body.

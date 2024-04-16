@@ -36,6 +36,7 @@ script = ExtResource("5_pjaqm")
 enemy = ExtResource("6_ofjxo")
 
 [node name="Timer" type="Timer" parent="EnemySpawnPoint"]
+wait_time = 5.0
 autostart = true
 
 [connection signal="screen_exited" from="Basics/Player/VisibleOnScreenNotifier2D" to="Basics" method="_on_visible_on_screen_notifier_2d_screen_exited"]

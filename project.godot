@@ -15,6 +15,10 @@ run/main_scene="res://Models/basics.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Common="*res://Common.gd"
+
 [input]
 
 ui_rotate_right={

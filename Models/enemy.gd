@@ -1,12 +1,15 @@
 extends RigidBody2D
 
+var SPEED = 100
 # Called when the node enters the scene tree for the first time.
 func _readyX():
-	var player = get_tree().get_root().get_node("Basics").position
-	look_at(player)
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	look_at(Common.player.position)
+	var direction = Common.player.position - position
+	var dirNormal = direction.normalized()
+	move_and_collide(dirNormal * SPEED * delta)
 	pass

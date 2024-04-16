@@ -13,6 +13,9 @@ func _ready():
 	camera.limit_right = 576
 	camera.limit_top = -324
 	camera.limit_bottom = 324
+
+	Common.player = self
+	
 	pass
 
 func _process(delta):
